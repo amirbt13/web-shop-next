@@ -2,17 +2,20 @@ import Image from "next/image";
 import logo from "@/public/world.svg";
 import Link from "next/link";
 import Toggle from "src/components/shared/toggle/Toggle";
+import BurgerMenu from "./burger/BurgerMenu";
 const Header = () => {
   return (
-    <div className="flex justify-between py-1 px-6 bg-shopBlue dark:bg-shopBlueD text-white items-center transition-all">
-      <div className="flex items-center gap-5">
+    <div className="flex justify-between py-1 px-2 lg:px-6 bg-shopBlue dark:bg-shopBlueD text-white items-center transition-all relative">
+      <div className="@left@ flex items-center lg:gap-5">
         <div className="flex flex-col items-center">
-          <Image src={logo} alt="webshop" className=" w-14" />
-          <p>WEB SHOP</p>
+          <Image src={logo} alt="webshop" className=" lg:w-14 w-6" />
+          <p className=" text-sm">WEB SHOP</p>
         </div>
-        <Toggle />
+        <div className="lg:block hidden">
+          <Toggle />
+        </div>
       </div>
-      <div>
+      <div className="@right@ hidden lg:block">
         <ul className="flex gap-4 flex-row-reverse ">
           <li>
             <Link
@@ -39,6 +42,9 @@ const Header = () => {
             </Link>
           </li>
         </ul>
+      </div>
+      <div className="@burger@">
+        <BurgerMenu />
       </div>
     </div>
   );

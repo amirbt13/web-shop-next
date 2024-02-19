@@ -1,4 +1,3 @@
-import { Product } from "@/types/product";
 import HomePage from "src/components/HomePage/HomePage";
 
 export default async function Home() {
