@@ -1,35 +1,34 @@
 "use client";
-import { Product } from "@/types/product";
+import { ProductType } from "@/types/product";
 import Landing from "./landing/Landing";
 import Shop from "./shop/Shop";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface Props {
-  products: Product[];
+  products: ProductType[];
 }
 
 const HomePage: React.FC<Props> = ({ products }) => {
-  const [activeSection, setActiveSection] = useState(null);
-
   const initRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
     if (initRef.current) {
       initRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "start",
+        inline: "start",
       });
     }
   };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
   return (
     <div>
       <Landing handleScroll={handleScroll} />
       <div ref={initRef}>
-        <Shop />
+        <Shop products={products} />
       </div>
     </div>
   );
