@@ -15,7 +15,7 @@ const BurgerMenu = () => {
       <div
         className={`absolute top-0 left-0 bg-shopBlue dark:bg-shopBlueD text-white w-full flex justify-between p-2 ${
           burgerShow ? " translate-y-[0%]" : " translate-y-[-100%] "
-        } transition-all duration-200 ease-in-out`}
+        } transition-all duration-200 ease-in-out border-b border-white`}
       >
         <ul className="flex flex-col gap-2 py-4 px-2">
           <li>

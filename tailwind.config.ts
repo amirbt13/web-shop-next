@@ -1,3 +1,4 @@
+import { Rubik } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -31,6 +32,11 @@ const config: Config = {
       colors: {
         shopBlue: "#13408f",
         shopBlueD: "#08214a",
+        landing: "",
+        landingD: "",
+      },
+      fontFamily: {
+        rubik: ["Rubik", "Arial", "sans-serif"],
       },
     },
   },
