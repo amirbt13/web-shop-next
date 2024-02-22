@@ -8,7 +8,7 @@ interface Props {
 const Shop: React.FC<Props> = ({ products }) => {
   return (
     <div>
-      <div className="@products@ grid-cols-2 grid gap-6 m-4 ">
+      <div className="@products@ grid-cols-2 grid gap-6 lg:gap-8 lg:mt-12 m-4 lg:m-8  lg:grid-cols-4">
         {!products.length ? (
           <p>no products are availabe</p>
         ) : (
