@@ -25,7 +25,7 @@ const ProductsDetailsPage: React.FC<Props> = ({ product }) => {
           width={400}
           height={500}
           quality={50}
-          className=" w-1/2 "
+          className=" w-1/2 max-h-full"
         />
       </div>
       <div className=" pt-2 pb-12 px-4 lg:basis-1/3">
