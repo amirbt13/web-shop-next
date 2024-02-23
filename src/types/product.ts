@@ -7,3 +7,7 @@ export interface ProductType {
   image: string;
   rating: { rate: number; count: number };
 }
+
+export interface CartProductType extends ProductType {
+  quantity: number;
+}
