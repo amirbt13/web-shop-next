@@ -9,7 +9,7 @@ interface Props {
 const ProductActions: React.FC<Props> = ({ product }) => {
   return (
     <div className="flex items-center gap-2 lg:gap-4">
-      <Favorite inCard={true} />
+      <Favorite product={product} inCard={true} />
       <AddToCart product={product} inCard={true} />
     </div>
   );

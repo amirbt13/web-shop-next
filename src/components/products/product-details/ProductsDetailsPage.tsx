@@ -44,7 +44,7 @@ const ProductsDetailsPage: React.FC<Props> = ({ product }) => {
           <p className=" dark:text-white">{description}</p>
         </div>
         <div className="flex gap-x-2 lg:gap-4 justify-center items-center mt-8 tranlate-x-[-30px]">
-          <Favorite inCard={false} />
+          <Favorite product={product} inCard={false} />
           <AddToCart product={product} inCard={false} />
         </div>
       </div>
