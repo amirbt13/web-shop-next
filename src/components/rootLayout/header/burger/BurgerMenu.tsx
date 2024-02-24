@@ -2,11 +2,16 @@
 
 import Image from "next/image";
 import burger from "@/public/burger-menu.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Toggle from "src/components/shared/toggle/Toggle";
+import { usePathname } from "next/navigation";
 const BurgerMenu = () => {
   const [burgerShow, setBurgerShow] = useState(false);
+  const path = usePathname();
+  useEffect(() => {
+    setBurgerShow(false);
+  }, [path]);
   return (
     <div>
       <div onClick={() => setBurgerShow(true)}>
