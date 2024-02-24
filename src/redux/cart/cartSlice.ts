@@ -35,8 +35,14 @@ const cartSlice = createSlice({
         state.items[itemIndex].quantity--;
       }
     },
+    insertBulk: (
+      state,
+      action: { type: string; payload: CartProductType[] }
+    ) => {
+      state.items = [...action.payload];
+    },
   },
 });
 
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, insertBulk } = cartSlice.actions;
 export default cartSlice.reducer;
