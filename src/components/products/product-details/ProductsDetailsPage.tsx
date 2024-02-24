@@ -2,6 +2,8 @@ import { ProductType } from "@/types/product";
 import Image from "next/image";
 import cartPlus from "@/public/cart-plus-white.svg";
 import RatingStar from "src/components/shared/rating-star/RatingStar";
+import AddToCart from "src/components/shared/product-actions/add-to-cart/AddToCart";
+import Favorite from "src/components/shared/product-actions/favorite/Favorite";
 interface Props {
   product: ProductType;
 }
@@ -41,11 +43,9 @@ const ProductsDetailsPage: React.FC<Props> = ({ product }) => {
         <div>
           <p className=" dark:text-white">{description}</p>
         </div>
-        <div className="flex justify-center lg:mt-10">
-          <button className=" bg-purple-700 dark:bg-purple-500 text-white flex items-center gap-2 py-1 px-2 rounded-md mt-4">
-            ADD TO CART{" "}
-            <Image src={cartPlus} alt="cart" width={30} height={30} />
-          </button>
+        <div className="flex gap-x-2 lg:gap-4 justify-center items-center mt-8 tranlate-x-[-30px]">
+          <Favorite inCard={false} />
+          <AddToCart product={product} inCard={false} />
         </div>
       </div>
     </div>
