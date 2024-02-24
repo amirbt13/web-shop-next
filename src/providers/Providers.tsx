@@ -2,6 +2,7 @@
 import store from "@/redux/store";
 import SyncCart from "@/utils/SyncCart";
 import SyncDarkMode from "@/utils/SyncDarkMode";
+import SyncFavorites from "@/utils/SyncFavorites";
 import { Provider } from "react-redux";
 
 function Providers({ children }: { children: React.ReactNode }) {
@@ -9,6 +10,7 @@ function Providers({ children }: { children: React.ReactNode }) {
     <Provider store={store}>
       <SyncDarkMode />
       <SyncCart />
+      <SyncFavorites />
       {children}
     </Provider>
   );
