@@ -13,7 +13,10 @@ const CartPage = () => {
   const items = useSelector((state: Store) => state.cart.items);
   const darkMode = useSelector((state: Store) => state.darkMode.value);
   return (
-    <div className=" min-h-[calc(100dvh-85px)] h-[calc(100dvh-85px)] overflow-y-scroll w-full relative">
+    <div
+      className="  h-[calc(100dvh-85px)] overflow-y-scroll
+    w-full relative"
+    >
       <div className="p-2 lg:p-4 flex items-center">
         <Image
           src={darkMode ? cartWhite : cart}
@@ -40,9 +43,10 @@ const CartPage = () => {
           })
         )}
       </div>
-      <CartPayment />
+      <div className="sticky top-full left-0 w-full">
+        <CartPayment />
+      </div>
     </div>
   );
 };
-
 export default CartPage;
