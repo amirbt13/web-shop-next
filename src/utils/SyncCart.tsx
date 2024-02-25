@@ -1,5 +1,5 @@
 "use client";
-import { insertBulk } from "@/redux/cart/cartSlice";
+import { calculateCost, insertBulk } from "@/redux/cart/cartSlice";
 import { Store } from "@/types/store/storeType";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -19,8 +19,9 @@ const SyncCart = () => {
     }
   }, [dispatch]);
   useEffect(() => {
+    dispatch(calculateCost());
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  }, [cart, dispatch]);
   return null;
 };
 
