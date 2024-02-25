@@ -18,8 +18,9 @@ const Favorite: React.FC<Props> = ({ inCard, product }) => {
   const dispatch = useDispatch();
   const isFaved = favorites.find((item) => item.id === product.id);
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <button
+        className="flex items-center justify-center"
         onClick={() =>
           isFaved
             ? dispatch(removeFromFaves(product.id))

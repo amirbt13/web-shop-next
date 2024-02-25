@@ -11,7 +11,7 @@ interface Props {
 const CartItemActions: React.FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
   return (
-    <div className=" flex items-center border border-gray-300 gap-6 py-1 px-3 w-max rounded-xl ">
+    <div className=" flex items-center border border-gray-300 gap-5 py px-3 w-max rounded-xl  bg-white text-black">
       <button
         onClick={() => dispatch(addItem(product))}
         className=" text-2xl text-center"

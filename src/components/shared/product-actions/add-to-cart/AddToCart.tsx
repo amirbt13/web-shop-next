@@ -35,7 +35,7 @@ const AddToCart: React.FC<Props> = ({ product, inCard }) => {
     if (!isInCart && !inCard) return cartPlusWhite;
   };
   return (
-    <div className="flex justify-center lg:mt-10">
+    <div className="flex justify-center items-center">
       <button
         onClick={() => dispatch(addItem(product))}
         className={`${

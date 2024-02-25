@@ -8,7 +8,7 @@ interface Props {
 
 const ProductActions: React.FC<Props> = ({ product }) => {
   return (
-    <div className="flex items-center gap-2 lg:gap-4">
+    <div className="flex justify-center items-center gap-2 lg:gap-4">
       <Favorite product={product} inCard={true} />
       <AddToCart product={product} inCard={true} />
     </div>
