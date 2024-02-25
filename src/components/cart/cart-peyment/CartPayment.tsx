@@ -12,7 +12,9 @@ const CartPayment = () => {
         <p></p>
       </div>
       <div className="flex justify-center gap-2">
-        <button className=" bg-green-600 py-2 px-4 rounded">Purchase</button>
+        <button className=" dark:bg-green-600 py-2 px-4 rounded  bg-green-700 text-white">
+          Purchase
+        </button>
       </div>
     </div>
   );
