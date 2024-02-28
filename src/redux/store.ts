@@ -9,7 +9,7 @@ const store = configureStore({
     darkMode: darkModeReducer,
     cart: cartReducer,
     favorites: favoritesReducer,
-    authModals: authModalsReducer,
+    // authModals: authModalsReducer,
   },
 });
 

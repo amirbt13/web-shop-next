@@ -1,9 +1,10 @@
 import { showSignin } from "@/redux/auth-modal/authModalsSlice";
+import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const Signup = () => {
-  const dispatch = useDispatch();
+  const router = useRouter();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -23,7 +24,7 @@ const Signup = () => {
     );
     const data = await res.json();
     if (res.status === 201) {
-      dispatch(showSignin());
+      router.replace("/auth/signin");
     }
   };
   return (
@@ -69,7 +70,7 @@ const Signup = () => {
         </button>
         <button
           className="border-b border-gray-700 text-gray-900"
-          onClick={() => dispatch(showSignin())}
+          onClick={() => router.push("/auth/signin")}
         >
           sign in
         </button>

@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <Header />
       {children}
-      <AuthModal />
+      {/* <AuthModal /> */}
       <Footer />
     </>
   );

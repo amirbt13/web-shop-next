@@ -1,14 +1,10 @@
 "use client";
 
-import { hideSingin, showSignup } from "@/redux/auth-modal/authModalsSlice";
 import { signIn } from "next-auth/react";
-
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-import { useDispatch } from "react-redux";
 
 const Login = () => {
-  const dispatch = useDispatch();
   const router = useRouter();
   const [form, setForm] = useState({
     email: "",
@@ -33,7 +29,7 @@ const Login = () => {
       console.log(res.error);
     } else {
       console.log("success");
-      dispatch(hideSingin());
+
       router.replace("/");
     }
   };
@@ -71,7 +67,7 @@ const Login = () => {
         </button>
         <button
           className="border-b border-gray-700 text-gray-900 text-sm"
-          onClick={() => dispatch(showSignup())}
+          onClick={() => router.push("/auth/signup")}
         >
           have an account ? Signup
         </button>
