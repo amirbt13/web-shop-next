@@ -66,7 +66,7 @@ const Signup = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-1 items-center justify-center">
+      <div className="flex flex-col gap-2 items-center justify-center">
         <button
           className=" bg-shopBlue text-white py-1 px-3 rounded-md text-xl"
           onClick={register}
@@ -74,10 +74,10 @@ const Signup = () => {
           REGISTER
         </button>
         <button
-          className="border-b border-gray-700 text-gray-900"
+          className="border-b border-gray-700 text-gray-900 dark:text-gray-200 text-sm"
           onClick={() => router.push("/auth/signin")}
         >
-          sign in
+          already have an account ? sign in
         </button>
       </div>
     </>
