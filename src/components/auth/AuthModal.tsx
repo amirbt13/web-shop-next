@@ -22,7 +22,7 @@ const AuthModal: React.FC<Props> = ({ signupForm }) => {
       <div className=" bg-white p-6 rounded-lg flex flex-col gap-6 lg:w-1/5 w-5/6 relative">
         <span
           className=" absolute top-0 left-0 bg-red-500 text-white p-1 text-sm cursor-pointer"
-          onClick={() => router.back()}
+          onClick={() => router.push("/")}
         >
           <Image src={arrowleft} alt="return" width={20} height={20} />
         </span>

@@ -3,6 +3,7 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const router = useRouter();
@@ -22,14 +23,13 @@ const Login = () => {
       redirect: false,
     });
     if (!res) {
-      console.log("Error in proccesing request");
+      toast.error("Error in proccesing request");
       return;
     }
     if (res?.error) {
-      console.log(res.error);
+      toast.error(res.error);
     } else {
-      console.log("success");
-
+      toast.success("logged in 😃");
       router.replace("/");
     }
   };

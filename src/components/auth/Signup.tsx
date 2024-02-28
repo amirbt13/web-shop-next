@@ -1,6 +1,7 @@
 import { showSignin } from "@/redux/auth-modal/authModalsSlice";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 const Signup = () => {
@@ -23,7 +24,11 @@ const Signup = () => {
       }
     );
     const data = await res.json();
+    if ("error" in data) {
+      toast.error(data.error);
+    }
     if (res.status === 201) {
+      toast.success("registered successfully");
       router.replace("/auth/signin");
     }
   };
