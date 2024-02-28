@@ -1,13 +1,19 @@
 "use client";
 
+import { signinValidation } from "@/utils/validations/auth/authValidations";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 
+export interface SinginForm {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
   const router = useRouter();
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<SinginForm>({
     email: "",
     password: "",
   });
@@ -18,6 +24,11 @@ const Login = () => {
   };
 
   const login = async () => {
+    const formErrorsArr = Object.entries(signinValidation(form));
+    if (formErrorsArr.length) {
+      formErrorsArr.reverse().forEach((err) => toast.error(err[1]));
+      return;
+    }
     const res = await signIn("credentials", {
       ...form,
       redirect: false,

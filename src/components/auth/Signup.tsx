@@ -1,12 +1,19 @@
 import { showSignin } from "@/redux/auth-modal/authModalsSlice";
+import { signupValidation } from "@/utils/validations/auth/authValidations";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
+export interface SingupForm {
+  email: string;
+  password: string;
+  rePassword: string;
+}
+
 const Signup = () => {
   const router = useRouter();
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<SingupForm>({
     email: "",
     password: "",
     rePassword: "",
@@ -16,6 +23,11 @@ const Signup = () => {
     setForm({ ...form, [name]: value });
   };
   const register = async () => {
+    const formErrorsArr = Object.entries(signupValidation(form));
+    if (formErrorsArr.length) {
+      formErrorsArr.reverse().forEach((err) => toast.error(err[1]));
+      return;
+    }
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/signup`,
       {
