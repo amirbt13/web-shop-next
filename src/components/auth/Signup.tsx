@@ -1,9 +1,9 @@
-import { showSignin } from "@/redux/auth-modal/authModalsSlice";
+"use client";
+
 import { signupValidation } from "@/utils/validations/auth/authValidations";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
 
 export interface SingupForm {
   email: string;
@@ -54,7 +54,7 @@ const Signup = () => {
             name="email"
             value={form.email}
             onChange={changeHandler}
-            className="border border-gray-300 rounded-lg p-1"
+            className="border border-gray-300 rounded-lg p-1 text-black"
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -64,7 +64,7 @@ const Signup = () => {
             name="password"
             value={form.password}
             onChange={changeHandler}
-            className="border border-gray-300 rounded-lg p-1"
+            className="border border-gray-300 rounded-lg p-1 text-black"
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -74,7 +74,7 @@ const Signup = () => {
             name="rePassword"
             value={form.rePassword}
             onChange={changeHandler}
-            className="border border-gray-300 rounded-lg p-1"
+            className="border border-gray-300 rounded-lg p-1 text-black"
           />
         </div>
       </div>

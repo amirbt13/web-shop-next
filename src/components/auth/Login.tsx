@@ -51,7 +51,7 @@ const Login = () => {
         <div className=" flex flex-col gap-1">
           <label>Email</label>
           <input
-            className=" border border-gray-300 rounded-lg p-1"
+            className=" border border-gray-300 rounded-lg p-1 text-black"
             type="text"
             name="email"
             value={form.email}
@@ -61,7 +61,7 @@ const Login = () => {
         <div className=" flex flex-col gap-1">
           <label>Password</label>
           <input
-            className=" border border-gray-300 rounded-lg p-1"
+            className=" border border-gray-300 rounded-lg p-1 text-black"
             type="password"
             name="password"
             value={form.password}
