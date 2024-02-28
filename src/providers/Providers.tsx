@@ -4,6 +4,7 @@ import SyncCart from "@/utils/SyncCart";
 import SyncDarkMode from "@/utils/SyncDarkMode";
 import SyncFavorites from "@/utils/SyncFavorites";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 
 function Providers({ children }: { children: React.ReactNode }) {
@@ -14,6 +15,7 @@ function Providers({ children }: { children: React.ReactNode }) {
         <SyncCart />
         <SyncFavorites />
         {children}
+        <Toaster />
       </SessionProvider>
     </Provider>
   );
