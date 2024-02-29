@@ -2,7 +2,7 @@
 
 import { signupValidation } from "@/utils/validations/auth/authValidations";
 import { useRouter } from "next/navigation";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 export interface SingupForm {
@@ -18,9 +18,15 @@ const Signup = () => {
     password: "",
     rePassword: "",
   });
+  const ref = useRef<HTMLButtonElement>(null);
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+  };
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      ref.current?.click();
+    }
   };
   const register = async () => {
     const formErrorsArr = Object.entries(signupValidation(form));
@@ -55,6 +61,7 @@ const Signup = () => {
             value={form.email}
             onChange={changeHandler}
             className="border border-gray-300 rounded-lg p-1 text-black"
+            onKeyUp={handleKeyPress}
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -65,6 +72,7 @@ const Signup = () => {
             value={form.password}
             onChange={changeHandler}
             className="border border-gray-300 rounded-lg p-1 text-black"
+            onKeyUp={handleKeyPress}
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -75,11 +83,13 @@ const Signup = () => {
             value={form.rePassword}
             onChange={changeHandler}
             className="border border-gray-300 rounded-lg p-1 text-black"
+            onKeyUp={handleKeyPress}
           />
         </div>
       </div>
       <div className="flex flex-col gap-2 items-center justify-center">
         <button
+          ref={ref}
           className=" bg-shopBlue text-white py-1 px-3 rounded-md text-xl"
           onClick={register}
         >

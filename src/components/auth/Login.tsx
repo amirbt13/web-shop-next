@@ -3,7 +3,13 @@
 import { signinValidation } from "@/utils/validations/auth/authValidations";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  useRef,
+  useState,
+} from "react";
 import toast from "react-hot-toast";
 
 export interface SinginForm {
@@ -18,11 +24,17 @@ const Login = () => {
     password: "",
   });
 
+  const ref = useRef<HTMLButtonElement>(null);
+
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
-
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      ref.current?.click();
+    }
+  };
   const login = async () => {
     const formErrorsArr = Object.entries(signinValidation(form));
     if (formErrorsArr.length) {
@@ -56,6 +68,7 @@ const Login = () => {
             name="email"
             value={form.email}
             onChange={changeHandler}
+            onKeyUp={handleKeyPress}
           />
         </div>
         <div className=" flex flex-col gap-1">
@@ -66,11 +79,13 @@ const Login = () => {
             name="password"
             value={form.password}
             onChange={changeHandler}
+            onKeyUp={handleKeyPress}
           />
         </div>
       </div>
       <div className="flex flex-col gap-2 items-center justify-center">
         <button
+          ref={ref}
           className=" bg-shopBlue text-white py-1 px-3 rounded-md text-xl"
           onClick={login}
         >
