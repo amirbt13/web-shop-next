@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Toggle from "src/components/shared/toggle/Toggle";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 const BurgerMenu = () => {
   const [burgerShow, setBurgerShow] = useState(false);
   const path = usePathname();
+  const session = useSession();
   useEffect(() => {
     setBurgerShow(false);
   }, [path]);
@@ -23,6 +25,11 @@ const BurgerMenu = () => {
         } transition-all duration-200 ease-in-out border-b border-white`}
       >
         <ul className="flex flex-col gap-2 py-4 px-2">
+          <li>
+            <Link href={session.data?.user ? "/dashboard" : "/auth/signin"}>
+              {session.data?.user ? "PROFILE" : "SIGN IN"}
+            </Link>
+          </li>
           <li>
             <Link href={"/"}>HOME</Link>
           </li>
