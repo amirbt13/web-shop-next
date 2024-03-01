@@ -41,10 +41,12 @@ model CartItem {
 }
 
 model Product {
-  id              Int        @id
-  image           String     @db.VarChar(1000)
-  category        String     @db.VarChar(255)
-  title           String     @db.VarChar(500)
+  id              Int        @id 
+  title           String     
   price           Float
+  description     String     @db.Text
+  category        String     
+  image           String     @db.Text
+  rating          Float
   cartItems       CartItem[]
 }
