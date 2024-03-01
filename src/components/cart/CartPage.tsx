@@ -15,9 +15,6 @@ const CartPage = () => {
   const darkMode = useSelector((state: Store) => state.darkMode.value);
 
   useEffect(() => {
-    if (!items.length) {
-      return;
-    }
     const syncBackend = async () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
         method: "POST",
