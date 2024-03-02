@@ -9,7 +9,7 @@ const AuthProfile = () => {
   return (
     <div>
       <Link
-        href={session.data?.user ? "/dashboard" : "/auth/signin"}
+        href={session.data?.user ? "/profile" : "/auth/signin"}
         className="text-2xl hover:border-b-2 hover:border-white transition-all duration-100 ease-linear"
       >
         {session.data?.user ? "PROFILE" : "SIGN IN"}
