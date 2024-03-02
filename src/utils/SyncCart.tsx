@@ -1,5 +1,5 @@
 "use client";
-import { insertBulk } from "@/redux/cart/cartSlice";
+import { calculateCost, insertBulk } from "@/redux/cart/cartSlice";
 import { CartProductType } from "@/types/product";
 import { Store } from "@/types/store/storeType";
 import { useEffect } from "react";
@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 const SyncCart = () => {
   const cart = useSelector((state: Store) => state.cart.items);
+  const init = useSelector((state: Store) => state.cart.init);
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchCart = async () => {
@@ -21,6 +22,9 @@ const SyncCart = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (init) {
+      return;
+    }
     const itemsWithId = cart.map((i: CartProductType) => {
       return { productId: i.id, quantity: i.quantity };
     });
@@ -35,7 +39,8 @@ const SyncCart = () => {
       }
     };
     updateCart();
-  }, [cart, dispatch]);
+    dispatch(calculateCost());
+  }, [cart, dispatch, init]);
 
   return null;
 };

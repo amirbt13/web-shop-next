@@ -5,12 +5,14 @@ export interface Cart {
   items: CartProductType[];
   totalCost: number;
   isPaid: boolean;
+  init: boolean;
 }
 
 const initialState: Cart = {
   items: [],
   isPaid: false,
   totalCost: 0,
+  init: true,
 };
 
 const cartSlice = createSlice({
@@ -30,8 +32,10 @@ const cartSlice = createSlice({
       );
       if (itemIndex === -1) {
         state.items.push({ ...action.payload, quantity: 1 });
+        state.init = false;
       } else {
         state.items[itemIndex].quantity++;
+        state.init = false;
       }
     },
     removeItem: (state, action: { type: string; payload: number }) => {
@@ -40,8 +44,10 @@ const cartSlice = createSlice({
       );
       if (state.items[itemIndex].quantity === 1) {
         state.items.splice(itemIndex, 1);
+        state.init = false;
       } else {
         state.items[itemIndex].quantity--;
+        state.init = false;
       }
     },
     insertBulk: (
@@ -49,6 +55,7 @@ const cartSlice = createSlice({
       action: { type: string; payload: CartProductType[] }
     ) => {
       state.items = [...action.payload];
+      state.init = false;
     },
   },
 });
