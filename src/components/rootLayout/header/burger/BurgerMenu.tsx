@@ -26,7 +26,7 @@ const BurgerMenu = () => {
       >
         <ul className="flex flex-col gap-2 py-4 px-2">
           <li>
-            <Link href={session.data?.user ? "/dashboard" : "/auth/signin"}>
+            <Link href={session.data?.user ? "/profile" : "/auth/signin"}>
               {session.data?.user ? "PROFILE" : "SIGN IN"}
             </Link>
           </li>
