@@ -3,12 +3,9 @@ import { ProductType } from "@/types/product";
 import Landing from "./landing/Landing";
 import Shop from "./shop/Shop";
 import { useEffect, useRef } from "react";
+import { Products } from "@/types/products";
 
-interface Props {
-  products: ProductType[];
-}
-
-const HomePage: React.FC<Props> = ({ products }) => {
+const HomePage: React.FC<Products> = ({ products }) => {
   const initRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
