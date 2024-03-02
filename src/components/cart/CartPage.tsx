@@ -8,23 +8,11 @@ import cartWhite from "@/public/cart-white.svg";
 import Image from "next/image";
 import Link from "next/link";
 import CartPayment from "./cart-peyment/CartPayment";
-import { useEffect } from "react";
 
 const CartPage = () => {
   const items = useSelector((state: Store) => state.cart.items);
   const darkMode = useSelector((state: Store) => state.darkMode.value);
 
-  useEffect(() => {
-    const syncBackend = async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
-        method: "POST",
-        body: JSON.stringify({ items }),
-      });
-      const data = await res.json();
-      console.log(data);
-    };
-    syncBackend();
-  }, [items]);
   return (
     <div className="  h-[calc(100dvh-85px)] overflow-y-scroll w-full relative">
       <div className="p-2 lg:p-4 flex items-center">

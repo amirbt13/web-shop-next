@@ -12,7 +12,7 @@ export default async function Home() {
       }
     );
     const data: Products = await res.json();
-    console.log(data);
+    // console.log(data);
     return <HomePage products={data.products} />;
   } catch (err) {
     catchLog("app/page.tsx", err);

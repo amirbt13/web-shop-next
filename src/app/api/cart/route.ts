@@ -40,15 +40,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         cartId: string;
         productId: number;
         quantity: number;
-        product: {
-          id: number;
-          title: string;
-          price: number;
-          description: string;
-          category: string;
-          image: string;
-          rating: number;
-        };
+        product: ProductType;
       }) => {
         return {
           ...ci.product,
@@ -56,7 +48,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         };
       }
     );
-    return NextResponse.json({ cartItemsFinal }, { status: 200 });
+    return NextResponse.json({ cart: cartItemsFinal }, { status: 200 });
   } catch (err) {
     return NextResponse.json(
       { error: "internal server error" },
@@ -85,20 +77,25 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 
     const { items } = await req.json();
-
+    console.log("items", items);
+    if (!items) {
+      return NextResponse.json({ error: "bad request" }, { status: 400 });
+    }
     let cart = await prisma.cart.findUnique({ where: { userId: user.id } });
 
     if (!cart) {
       cart = await prisma.cart.create({ data: { userId: user.id } });
     }
     const cartId = cart.id;
-    const itemsReady = items.map((i: CartProductType) => {
-      return {
-        productId: i.id,
-        cartId,
-        quantity: i.quantity,
-      };
-    });
+    const itemsReady = items.map(
+      (i: { productId: number; quantity: number }) => {
+        return {
+          productId: i.productId,
+          cartId,
+          quantity: i.quantity,
+        };
+      }
+    );
     const deletedItems = await prisma.cartItem.deleteMany({
       where: { cartId: cartId },
     });
