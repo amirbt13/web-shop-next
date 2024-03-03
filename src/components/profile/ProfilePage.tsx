@@ -1,4 +1,6 @@
+"use client";
 import { Profile } from "@/types/profile";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
@@ -40,12 +42,13 @@ const ProfilePage: React.FC<Props> = ({ profile }) => {
           </Link>
         </div>
         <div className=" border-4 dark:border-white border-slate-600 rounded flex items-center justify-center py-2">
-          <Link
-            href={"/auth/signout"}
+          <button
+            // href={"/auth/signout"}
+            onClick={() => signOut({ callbackUrl: "/", redirect: true })}
             className="flex items-center justify-center border-4 dark:border-white border-slate-600 h-32 w-32 rounded-[50%] p-2"
           >
             SIGN OUT
-          </Link>
+          </button>
         </div>
       </div>
     </div>
