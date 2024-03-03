@@ -2,11 +2,13 @@
 import { calculateCost, insertBulk } from "@/redux/cart/cartSlice";
 import { CartProductType } from "@/types/product";
 import { Store } from "@/types/store/storeType";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const SyncCart = () => {
+  const path = usePathname();
   const cart = useSelector((state: Store) => state.cart.items);
   const init = useSelector((state: Store) => state.cart.init);
   const dispatch = useDispatch();
@@ -15,6 +17,7 @@ const SyncCart = () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`);
       const data = await res.json();
       if (res.status === 200) {
+        console.log("data.cart", data.cart);
         dispatch(insertBulk(data.cart));
       }
     };
@@ -22,6 +25,7 @@ const SyncCart = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log("path");
     if (init) {
       return;
     }
@@ -40,7 +44,7 @@ const SyncCart = () => {
     };
     updateCart();
     dispatch(calculateCost());
-  }, [cart, dispatch, init]);
+  }, [cart, path, dispatch, init]);
 
   return null;
 };

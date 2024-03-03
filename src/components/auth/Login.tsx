@@ -1,5 +1,6 @@
 "use client";
 
+import { insertBulk } from "@/redux/cart/cartSlice";
 import { signinValidation } from "@/utils/validations/auth/authValidations";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -11,6 +12,7 @@ import {
   useState,
 } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 export interface SinginForm {
   email: string;
@@ -19,6 +21,7 @@ export interface SinginForm {
 
 const Login = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [form, setForm] = useState<SinginForm>({
     email: "",
     password: "",
@@ -52,8 +55,15 @@ const Login = () => {
     if (res?.error) {
       toast.error(res.error);
     } else {
-      toast.success("logged in 😃");
-      router.replace("/");
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`);
+      const data = await res.json();
+      if (res.status === 200) {
+        console.log("fetched");
+        dispatch(insertBulk(data.cart));
+        toast.success("logged in 😃");
+
+        router.replace("/");
+      }
     }
   };
 

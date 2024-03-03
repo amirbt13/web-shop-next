@@ -54,7 +54,15 @@ const cartSlice = createSlice({
       state,
       action: { type: string; payload: CartProductType[] }
     ) => {
-      state.items = [...action.payload];
+      action.payload.forEach((pi) => {
+        const index = state.items.findIndex((ri) => ri.id === pi.id);
+        if (index === -1) {
+          state.items.push(pi);
+        } else {
+          state.items[index].quantity++;
+        }
+      });
+      // state.items = [...action.payload];
       state.init = false;
     },
   },
