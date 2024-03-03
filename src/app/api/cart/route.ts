@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { CartProductType, ProductType } from "@/types/product";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
