@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# eCommerce Project WEB SHOP
+
+This project is a full-featured eCommerce platform built with Next.js 14, TypeScript, Tailwind CSS, and Redux Toolkit. It includes a variety of features such as a store and cart functionality, dark mode, authentication and authorization, and both server-side rendering (SSR) and static site generation (SSG) for optimal performance and SEO. The backend is integrated within the Next.js framework using API routes, and it connects to a MySQL database hosted on Liara Cloud, with Prisma as the ORM for efficient database management.
+
+## Features
+
+- **Store and Cart**: Browse products and manage your shopping cart with ease.
+- **Dark Mode**: Toggle between light and dark themes for a comfortable browsing experience at any time of day.
+- **Authentication and Authorization**: Secure user registration and login functionality, with role-based access control.
+- **Dynamic Rendering**: Utilizes both SSG and SSR for fast load times and dynamic content rendering.
+- **Backend Integration**: Built-in API routes within Next.js for handling backend logic seamlessly.
+- **Database**: MySQL database hosted on Liara Cloud, managed with Prisma ORM for robust data handling.
+
+## Technologies
+
+- **Frontend**: Next.js 14, TypeScript, Tailwind CSS, Redux Toolkit
+- **Backend**: Next.js API Routes
+- **Database**: MySQL (Liara Cloud), Prisma ORM
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (version 16.x or later)
+- npm (version 7.x or later)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/amirbt13/web-shop-next.git
+   cd web-shop-next
 
-## Learn More
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```
 
-## Deploy on Vercel
+3. Set up your environment variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Copy the .env.example file to a new file named .env.
+- Fill in the environment variables with your database credentials and any other required API keys or secrets.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+- Visit http://localhost:3000 in your browser to view the application.
+
+### Deployment
+
+The project can be deployed on Vercel, Netlify, or any other platform that supports Next.js deployments. Follow the specific instructions provided by your deployment platform.
+
+### Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any features, bug fixes, or improvements.
