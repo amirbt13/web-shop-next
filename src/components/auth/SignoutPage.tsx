@@ -1,12 +1,14 @@
 "use client";
 
 import { signOut } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const SignoutPage = () => {
   useEffect(() => {
-    signOut();
+    signOut({
+      callbackUrl: "/",
+      redirect: true,
+    });
   }, []);
   return null;
 };
