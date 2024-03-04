@@ -1,16 +1,16 @@
-import Product from "./product/Product";
-import { Products } from "@/types/products";
+import Products from "src/components/products/Products";
+import Product from "../../shared/product/Product";
 
-const Shop: React.FC<Products> = ({ products }) => {
+import { ProductType } from "@/types/product";
+
+interface Props {
+  products: ProductType[];
+}
+
+const Shop: React.FC<Props> = ({ products }) => {
   return (
     <div>
-      <div className="@products@ grid-cols-2 grid gap-6 lg:gap-8 lg:mt-12 m-4 lg:m-8  lg:grid-cols-4">
-        {!products.length ? (
-          <p>no products are availabe</p>
-        ) : (
-          products.map((p) => <Product key={p.id} product={p} />)
-        )}
-      </div>
+      <Products products={products} />
     </div>
   );
 };
