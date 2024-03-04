@@ -9,15 +9,7 @@ interface Props {
 }
 
 const ProductsDetailsPage: React.FC<Props> = ({ product }) => {
-  const {
-    id,
-    title,
-    description,
-    category,
-    price,
-    image,
-    rating: { rate, count },
-  } = product;
+  const { id, title, description, category, price, image, rating } = product;
   return (
     <div className=" h-[calc(100dvh-85px)] lg:flex lg:flex-row-reverse">
       <div className=" bg-white flex items-center justify-center lg:basis-2/3">
@@ -33,7 +25,7 @@ const ProductsDetailsPage: React.FC<Props> = ({ product }) => {
       <div className=" pt-2 pb-12 px-4 lg:basis-1/3">
         <div className=" flex justify-between mb-4 mt-2 items-start">
           <div className="flex flex-col gap-y-2 lg:gap-y-6">
-            <RatingStar rate={rate} />
+            <RatingStar rate={rating} />
             <p className=" text-white bg-shopBlue dark:bg-shopBlueD py-1 px-2 rounded dark:border dark:border-gray-500">
               {category}
             </p>
