@@ -1,9 +1,9 @@
-import { CartProductType } from "@/types/product";
+import type { CartItem } from "@/types/cartItem";
 import Image from "next/image";
 import CartItemActions from "src/components/shared/product-actions/cart-item-actions/CartItemActions";
 
 interface Props {
-  product: CartProductType;
+  product: CartItem;
 }
 
 const CartItem: React.FC<Props> = ({ product }) => {

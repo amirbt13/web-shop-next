@@ -7,7 +7,3 @@ export interface ProductType {
   image: string;
   rating: number;
 }
-
-export interface CartProductType extends ProductType {
-  quantity: number;
-}

@@ -7,7 +7,6 @@ const ProductDetails = async ({
 }: {
   params: { productID: string };
 }) => {
-  // try {
   const { productID } = params;
 
   const res = await fetch(
@@ -22,9 +21,6 @@ const ProductDetails = async ({
   } else {
     notFound();
   }
-  // } catch (err) {
-  //   catchLog("products/[productID]/page.tsx", err);
-  // }
 };
 
 export default ProductDetails;
