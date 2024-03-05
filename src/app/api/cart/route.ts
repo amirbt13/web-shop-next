@@ -78,7 +78,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 
     const { items } = await req.json();
-    console.log("items", items);
+    // console.log("items", items);
     if (!items) {
       return NextResponse.json({ error: "bad request" }, { status: 400 });
     }
