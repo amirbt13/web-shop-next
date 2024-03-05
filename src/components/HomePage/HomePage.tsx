@@ -1,8 +1,8 @@
 "use client";
-import { ProductType } from "@/types/product";
+
 import Landing from "./landing/Landing";
 import Shop from "./shop/Shop";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Products } from "@/types/products";
 
 const HomePage: React.FC<Products> = ({ products }) => {
@@ -17,12 +17,9 @@ const HomePage: React.FC<Products> = ({ products }) => {
       });
     }
   };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+
   return (
-    <div>
+    <div className=" h-full">
       <Landing handleScroll={handleScroll} />
       <div ref={initRef}>
         <Shop products={products} />

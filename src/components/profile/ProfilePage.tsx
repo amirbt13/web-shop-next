@@ -11,7 +11,7 @@ interface Props {
 const ProfilePage: React.FC<Props> = ({ profile }) => {
   const { name, lastname, email, createdAt } = profile;
   return (
-    <div className="p-2 h-[calc(100dvh-85px)] dark:text-white flex flex-col justify-between pb-4">
+    <div className="p-2 h-full dark:text-white flex flex-col justify-between pb-4">
       <div className=" flex flex-col gap-2">
         <h1 className=" text-4xl ">{name ? `Hi ${name} 👋🏻` : email}</h1>
         <p>join date: {new Date(createdAt).toDateString()}</p>

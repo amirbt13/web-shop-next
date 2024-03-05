@@ -9,6 +9,7 @@ const FavoritesPage = () => {
 
   return (
     <div>
+      <h1 className=" dark:text-white  text-xl">Favorited Products</h1>
       <Products products={faves} />
     </div>
   );

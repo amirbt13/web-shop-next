@@ -6,8 +6,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      {children}
-      {/* <AuthModal /> */}
+      <main className=" min-h-[calc(100dvh-91px)] ">{children}</main>
+
       <Footer />
     </>
   );
