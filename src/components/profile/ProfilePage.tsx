@@ -27,7 +27,7 @@ const ProfilePage: React.FC<Props> = ({ profile }) => {
         </div>
         <div className=" border-4 dark:border-white border-slate-600 rounded flex items-center justify-center py-2">
           <Link
-            href={"/faves"}
+            href={"/profile/faves"}
             className="flex items-center justify-center border-4 dark:border-white border-slate-600 h-32 w-32 rounded-[50%] p-2"
           >
             FAVORITES
