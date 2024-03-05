@@ -58,7 +58,7 @@ const Login = () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`);
       const data = await res.json();
       if (res.status === 200) {
-        console.log("fetched");
+        // console.log("fetched");
         dispatch(insertBulk(data.cart));
         toast.success("logged in 😃");
 

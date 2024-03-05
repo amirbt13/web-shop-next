@@ -15,7 +15,7 @@ const SyncDarkMode = () => {
       const isDarkMode = JSON.parse(darkModeSetting).value;
 
       // Dispatch an action to update the Redux state if needed
-      console.log(isDarkMode);
+      // console.log(isDarkMode);
       if (isDarkMode) {
         dispatch(toggleMode());
       } else {
@@ -35,7 +35,7 @@ const SyncDarkMode = () => {
     // Subscribe to store changes and update localStorage
     const unsubscribe = store.subscribe(() => {
       const state = store.getState();
-      console.log(state.darkMode);
+      // console.log(state.darkMode);
       localStorage.setItem("darkMode", JSON.stringify(state.darkMode));
     });
     return () => unsubscribe();

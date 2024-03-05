@@ -1,6 +1,6 @@
 "use client";
 import { calculateCost, insertBulk } from "@/redux/cart/cartSlice";
-import { CartProductType } from "@/types/product";
+import { CartItem } from "@/types/cartItem";
 import { Store } from "@/types/store/storeType";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -17,7 +17,7 @@ const SyncCart = () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`);
       const data = await res.json();
       if (res.status === 200) {
-        console.log("data.cart", data.cart);
+        // console.log("data.cart", data.cart);
         dispatch(insertBulk(data.cart));
       }
     };
@@ -25,11 +25,11 @@ const SyncCart = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("path");
+    // console.log("path");
     if (init) {
       return;
     }
-    const itemsWithId = cart.map((i: CartProductType) => {
+    const itemsWithId = cart.map((i: CartItem) => {
       return { productId: i.id, quantity: i.quantity };
     });
     const updateCart = async () => {
